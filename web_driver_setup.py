@@ -23,6 +23,10 @@ class WebDriverSetup:
             headless (bool, optional): Whether to run the browser in headless mode or not. Defaults to True.
         """
         self.options = Options()
+        prefs = {
+            "download.default_directory": f"{os.getcwd()}\\downloads"
+        }
+        self.options.add_experimental_option("prefs", prefs)
         self.options.add_argument("start-maximized")
         self.options.add_argument('--no-sandbox')
         if headless:
