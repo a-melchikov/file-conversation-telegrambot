@@ -14,6 +14,7 @@ class WebDriverSetup:
         options (Options): Chrome options.
         headless (bool): Whether to run the browser in headless mode or not.
     """
+    download_directory = os.path.join(os.getcwd(), 'downloads')
 
     def __init__(self, headless=True):
         """
@@ -24,7 +25,7 @@ class WebDriverSetup:
         """
         self.options = Options()
         prefs = {
-            "download.default_directory": f"{os.getcwd()}\\downloads"
+            "download.default_directory": self.download_directory,
         }
         self.options.add_experimental_option("prefs", prefs)
         self.options.add_argument("start-maximized")
